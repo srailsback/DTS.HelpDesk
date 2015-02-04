@@ -1,0 +1,33 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.FAQViewModel
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary("", new { @class = "text-danger" })
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placehoder = "FAQ Title" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Content)
+    @Html.TextAreaFor(x => x.Content, new { @class = "form-control txtArea", placehoder = "FAQ Content", spellcheck = "true" })
+</div>
+
+<div class="form-group">
+    <label class="control-label col-sm-2">Publish</label>
+    <div class="col-sm-3">
+        @Html.DropDownListFor(x => x.IsPublished, (IEnumerable<SelectListItem>)ViewBag.YesOrNo, new { @class = "form-control" })
+    </div>
+</div>
+
+
+<div class="form-group"><br />
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-success">Save</button>
+        @if (ViewContext.HttpContext.Request.Url.ToString().ToLower().Contains("edit"))
+        {
+            <button type="button" class="btn btn-danger delete-button">Delete</button>
+        }
+        @Html.ActionLink("Cancel", "Index", new { controller = "FAQ" }, new { @class = "btn" })
+    </div>
+</div>

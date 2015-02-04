@@ -1,0 +1,16 @@
+﻿@using Mvc.Mailer;
+@{ 
+    ViewBag.Title = "DTS HelpDesk Account Updated";
+}
+
+<p>
+    Hi there,<br />
+    Your DTS HelpDesk account was updated. Here's your new login information:<br />
+    Username: @ViewBag.Username<br />
+    Temporary Password: @ViewBag.Password
+</p>
+<p>
+    Use this link to login:<br />
+    <a href="@Url.Abs(Url.Action("Index", new { controller = "Admin", area = "Admin" }))">Login</a>
+</p>
+<p>After login you will be required to reset your temporary password.</p>

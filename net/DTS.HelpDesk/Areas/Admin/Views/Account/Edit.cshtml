@@ -1,0 +1,43 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.ProfileViewModel
+@{
+    ViewBag.Title = "Edit Account";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@ViewBag.Title</h3>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { @class = "form-horizontal editform", role = "form" }))
+                {
+                    @Html.Partial("_CreateOrEdit")
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+@Scripts.Render("~/scripts/utilities")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/scripts/account")
+
+
+<script>
+    $(function () {
+         dts.account.init({
+            _selector: '.delete-button',
+            _title: 'Delete Account?',
+            _message: 'Are you sure, this is irreversible.'
+        });
+    });
+</script>
+}

@@ -1,0 +1,57 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.ArticleViewModel
+@{
+    ViewBag.Title = "Create Article";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Create", "Article", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.Partial("_CreateOrEdit")
+        }
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/editor/styles")
+    @Styles.Render("~/styles/article")
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/scripts/utilities")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/editor/scripts")
+    @Scripts.Render("~/scripts/article")
+
+<script>
+
+    $(function () {
+        dts.article.init({
+            //_selector: '.delete-button',
+            //_title: 'Delete FAQ?',
+            //_message: 'Are you sure, this is irreversible.',
+            _textAreaSelector: '.txtArea',
+            _textAreaHeight: '300',
+            _dateTimePickerSelectors : '#publishAtPicker, #unpublishAtPicker'
+    });
+    });
+</script>
+
+
+
+
+
+
+    <script>
+        $('.txtArea').summernote({
+            height: 300
+        });
+    </script>
+}

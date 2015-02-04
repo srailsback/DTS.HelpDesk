@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "FAQs";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title </h1>
+    </div>
+    <div class="col-lg-12">
+        @Html.ActionLink("New FAQ", "Create", new { controller = "FAQ", area = "Admin" }, new { @class = "btn btn-primary btn-sm" })
+    </div>
+</div>
+
+<div class="row" style="margin-top:30px;">
+    <div class="col-lg-12">
+        <table id="grid" class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/styles/datatables")
+    <style type="text/css">
+    </style>
+}
+
+@section Scripts {
+    @Scripts.Render("~/scripts/utilities")
+    @Scripts.Render("~/scripts/datatables")
+    @Scripts.Render("~/scripts/faqs")
+
+    <script>
+    var _dataTable;
+    $(function () {
+        _dataTable = dts.faqs.init({
+            _tableSelector: '#grid',
+            _columns: JSON.parse('@Html.Raw(ViewBag.Columns)'),
+            _getUrl: '@Url.Action("GetData", new { controller = "FAQ", area = "Admin"})',
+            _editUrl: '@Url.Action("Edit", new { controller = "FAQ", area = "Admin"})',
+            _publishUrl: '@Url.Action("Publish", new { controller = "FAQ", area = "Admin"})'
+        });
+    });
+    </script>
+    @Html.Partial("_ichTemplates")
+
+
+}

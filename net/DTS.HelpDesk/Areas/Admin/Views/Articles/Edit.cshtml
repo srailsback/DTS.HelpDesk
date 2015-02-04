@@ -1,0 +1,43 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.ArticleViewModel
+@{
+    ViewBag.Title = "Edit Article";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Edit", "Artilces", FormMethod.Post, new { @class="editform", role = "form" }))
+        {
+            @Html.Partial("_CreateOrEdit")
+        }
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/editor/styles")
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/scripts/utilities")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/editor/scripts")
+    @Scripts.Render("~/scripts/article")
+    <script>
+
+        $(function () {
+            dts.faq.init({
+                _selector: '.delete-button',
+                _title: 'Delete Article?',
+                _message: 'Are you sure, this is irreversible.',
+                _textAreaSelector: '.txtArea',
+                _textAreaHeight: '300'
+            });
+        });
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_BlankLayout.cshtml";
+    ViewBag.Title = "Error";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:30px;">
+        <div class="col-lg-6 col-lg-offset-4">
+            <div class="alert alert-danger">
+
+                <h1>Something Is Amiss</h1>
+                <p>
+                    Hmmm.... something isn't right. Don't worry. This was logged and a crack team of code monkeys is ontop it.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

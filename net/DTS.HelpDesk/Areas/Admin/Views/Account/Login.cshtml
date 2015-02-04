@@ -1,0 +1,39 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.LoginViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_BlankLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">DTS HelpDesk Sign In</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <fieldset>
+                    <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-success">Login</button>
+                        @Html.ActionLink("Forgot password", "Forgot", new { controller = "Account", area = "Admin" }, new { @class = "btn" })
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

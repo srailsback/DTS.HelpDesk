@@ -1,0 +1,9 @@
+﻿@if (TempData.ContainsKey("warning") ||
+    TempData.ContainsKey("info") ||
+    TempData.ContainsKey("error") ||
+    TempData.ContainsKey("success")
+    ) { 
+<div style="margin-top:30px;">
+    @Html.Alert()
+</div>
+}

@@ -1,0 +1,59 @@
+﻿@model DTS.HelpDesk.Areas.Admin.Models.ArticleViewModel
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary("", new { @class = "text-danger" })
+
+<div class="row">
+    <div class="col-lg-8">
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placehoder = "FAQ Title" })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.FriendlyTitle)
+            @Html.TextBoxFor(x => x.FriendlyTitle, new { @class = "form-control", placehoder = "Friendly Title" })
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(x => x.PublishAtUTC)
+            <div class="input-group date" id="publishAtPicker">
+                @Html.TextBoxFor(x => x.PublishAtUTC, new { @class = "form-control", @value = Model.PublishAtUTC.ToString("MM/DD/YYYY hh:mm tt") })
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.UnpublishAtUTC)
+            <div class="input-group date" id="unpublishAtPicker">
+                @Html.TextBoxFor(x => x.UnpublishAtUTC, new { @class = "form-control", @value = ((DateTime)Model.UnpublishAtUTC).ToString("MM/DD/YYYY hh:mm tt") })
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.Content)
+    @Html.TextAreaFor(x => x.Content, new { @class = "form-control txtArea", placehoder = "FAQ Content", spellcheck = "true" })
+</div>
+
+
+
+
+<div class="form-group"><br />
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-success">Save</button>
+        @if (ViewContext.HttpContext.Request.Url.ToString().ToLower().Contains("edit"))
+        {
+            <button type="button" class="btn btn-danger delete-button">Delete</button>
+        }
+        @Html.ActionLink("Cancel", "Index", new { controller = "FAQ" }, new { @class = "btn" })
+    </div>
+</div>

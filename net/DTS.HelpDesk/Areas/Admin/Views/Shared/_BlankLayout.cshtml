@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DTS HelpDesk">
+    <meta name="author" content="Steve Railsback">
+
+    <title>@ViewBag.Title - DTS HelpDesk</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/admin/styles")
+
+    @Scripts.Render("~/admin/modernizr")
+    @RenderSection("Styles", required: false)
+
+
+</head>
+<body>
+    <div id="wrapper">
+        @RenderBody()
+    </div>
+    <!-- /#wrapper -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Public/Admin/js/html5shiv.js")"></script>
+    <![endif]-->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

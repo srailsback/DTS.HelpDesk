@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+</div>
+
+
+
+<div class="row">
+
+    @*Messages*@
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-envelope fa-4x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">26</div>
+                        <div>New Messages!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", new { Controller = "Messages", area = "Admin" })">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    @*Tickets*@
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-bell fa-4x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Support Tickets!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", new{ controller = "Tickets", area = "Admin"})">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    @*FAQs*@
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <i class="fa fa-question fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                        <div class="huge">@ViewBag.NewFAQs / @ViewBag.TotalFAQs</div>
+                        <div>New FAQs / Total FAQs</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", new{ controller = "FAQ", area ="Admin" })">
+                <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    @*Articles*@
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-newspaper-o fa-4x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">125</div>
+                        <div>New Articles!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", new { Controller = "Articles", area = "Admin"})">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
